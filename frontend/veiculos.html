@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavaJatoPro - Veículos</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+   <nav class="sidebar-menu">
+        <div class="brand">LavaJatoPro</div>
+       <ul>
+            
+            <li><a href="/dashboard" class="menu-item ">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item ">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item active">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item ">👨‍🍳 Funcionários</a></li>
+            <li><a href="/ordens-servico" class="menu-item ">📝 Ordens de Serviço</a></li>
+            <li><a href="/usuarios" class="menu-item ">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item ">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item ">🚪 Sair / Login</a></li>
+          </ul>
+       
+    </nav>
+   
+
+    <main class="main-content">
+        <header class="content-header">
+            <h2>Gerenciamento de Veículos</h2>
+            <button class="btn btn-primary" onclick="abrirModal()">+ Novo Veículo</button>
+        </header>
+
+        <section class="data-container">
+            <table class="tabela-padrao">
+                <thead>
+                    <tr><th>ID</th><th>Placa</th><th>Modelo</th><th>Marca</th><th>Cor</th><th>Dono (ID)</th></tr>
+                </thead>
+                <tbody id="tabela-veiculos"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="modal-veiculo" class="modal">
+        <div class="modal-conteudo">
+            <h3>Cadastrar Novo Veículo</h3>
+            <form id="form-veiculo">
+                <input type="text" id="placa" placeholder="Placa (ex: ABC1D23)">
+            <input type="text" id="modelo" placeholder="Modelo (ex: Civic)">
+                <input type="text" id="marca" placeholder="Marca (ex: Honda)">
+                <input type="text" id="cor" placeholder="Cor (ex: Cinza)">
+                <input type="number" id="cliente_id" placeholder="ID do Cliente Dono">
+                
+                <div class="modal-acoes">
+                    <button type="button" class="btn btn-cancelar" onclick="fecharModal()">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-salvar">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+  <script src="static/veiculos.js"></script>  
+</body>
+</html>

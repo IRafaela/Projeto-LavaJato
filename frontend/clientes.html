@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>LavaJatoPro - Clientes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="sidebar-menu">
+        <div class="brand">LavaJatoPro</div>
+        <ul>
+            
+            <li><a href="/dashboard" class="menu-item ">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item active">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item ">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item ">👨‍🍳 Funcionários</a></li>
+            <li><a href="/ordens-servico" class="menu-item ">📝 Ordens de Serviço</a></li>
+            <li><a href="/usuarios" class="menu-item ">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item ">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item">🚪 Sair / Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+            <header class="content-header">
+            <h2>Gerenciamento de Clientes</h2>
+            <button class="btn btn-primary" onclick="abrirModal()">+ Novo Cliente</button>
+        </header>
+
+        <section class="data-container">
+            <table class="tabela-padrao">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-clientes"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="modal-cliente" class="modal">
+        <div class="modal-conteudo">
+            <h3>Cadastrar Novo Cliente</h3>
+            <form id="form-cliente">
+                <div>
+                    <input type="text" id="nome" placeholder="Nome Completo" required>
+                </div>
+                <div>
+                    <input type="text" id="telefone" placeholder="Telefone" required>
+                </div>
+                <div>
+                    <input type="text" id="endereco" placeholder="Endereço" required>
+                </div>
+                <div>
+                    <input type="text" id="cpf" placeholder="CPF (Opcional)">
+                </div>
+                <div>
+                    <button type="button" class="btn btn-cancelar" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-salvar">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="static/clientes.js"></script>
+</body>
+</html>

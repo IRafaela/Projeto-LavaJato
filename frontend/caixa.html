@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Caixa - LavaJatoPro</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="sidebar-menu">
+        <div class="brand">LavaJatoPro</div>
+
+        <ul>
+            <li><a href="/dashboard" class="menu-item">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item">👨‍🍳 Funcionários</a></li>
+            <li>
+                <a href="/ordens-servico" class="menu-item">
+                    📝 Ordens de Serviço
+                </a>
+            </li>
+            <li><a href="/usuarios" class="menu-item">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item active">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item">🚪 Sair / Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <div class="filtro-container">
+            <label for="dataRelatorio">Filtrar Data:</label>
+            <input type="date" id="dataRelatorio" aria-label="Data do relatório">
+            <button onclick="carregarCaixaComFiltro()">Pesquisar</button>
+            <button onclick="carregarCaixaHoje()">Hoje</button>
+        </div>
+        
+        <header class="content-header">
+            <div>
+                <h1>📦 Controle de Caixa</h1>
+                <p>
+                    Acompanhe as entradas, saídas e o saldo atual.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                onclick="abrirModalRetirada()">
+                + Nova Retirada
+            </button>
+        </header>
+
+        <section class="resumo-container">
+            <div class="card-resumo">
+                <h3>Total Dinheiro</h3>
+                <p id="total-dinheiro" class="entrada">R$ 0,00</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Total Pix</h3>
+                <p id="total-pix" class="entrada">R$ 0,00</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Total Cartão</h3>
+                <p id="total-cartao" class="entrada">R$ 0,00</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Total de Saídas</h3>
+                <p id="total-saidas" class="saida">R$ 0,00</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Saldo Atual</h3>
+                <p id="saldo-atual">R$ 0,00</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Histórico de Movimentações</h2>
+
+            <div class="table-container">
+                <table class="tabela-caixa-estilo">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Valor</th>
+                            <th>Forma de Pagamento</th>
+                            <th>Data/Hora</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabela-caixa"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/caixa.js"></script>
+</body>
+</html>

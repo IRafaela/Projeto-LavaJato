@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavaJatoPro - Dashboard</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    <nav class="sidebar-menu">
+    <div class="brand">LavaJatoPro</div>
+
+         <ul>
+            
+            <li><a href="/dashboard" class="menu-item active">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item ">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item ">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item ">👨‍🍳 Funcionários</a></li>
+            <li><a href="/ordens-servico" class="menu-item">📝 Ordens de Serviço</a></li>
+            <li><a href="/usuarios" class="menu-item">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item ">🚪 Sair / Login</a></li>
+          </ul>
+        </nav>
+
+    <div class="main-content">
+        <div class="cards-dashboards">
+          <p>Clientes: <span id="total-clientes">0</span></p>
+          <p>Veículos: <span id="total-veiculos">0</span></p>
+          <p>Funcionários: <span id="total-funcionarios">0</span></p>
+          <p>Ordens Pendentes: <span id="total-ordens">0</span></p>
+        </div>
+        <h2>Ordens de Serviço Pendentes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de Lavagem</th>
+                        <th>Valor</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-dashboard-pendentes">
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

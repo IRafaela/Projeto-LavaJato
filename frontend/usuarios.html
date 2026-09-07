@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavaJatoPro - Usuários</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="sidebar-menu">
+        <div class="brand">LavaJatoPro</div>
+        <ul>
+            
+            <li><a href="/dashboard" class="menu-item ">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item ">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item ">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item ">👨‍🍳 Funcionários</a></li>
+            <li><a href="/ordens-servico" class="menu-item ">📝 Ordens de Serviço</a></li>
+            <li><a href="/usuarios" class="menu-item active">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item ">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item ">🚪 Sair / Login</a></li>
+          </ul>
+        
+    </nav>
+
+    <main class="main-content">
+        <header class="content-header">
+            <h2>Configurações de Usuários do Sistema</h2>
+            <button class="btn btn-primary" onclick="abrirModal()">+ Novo Usuário
+
+            </button>
+        </header>
+
+        <section class="data-container">
+            <table class="tabela-padrao">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome do Usuário</th>
+                        <th>Sobrenome</th>
+                        <th>E-mail de Login</th>
+                        <th>Administrador?</th>
+                       
+                    </tr>
+                </thead>
+                
+                <tbody id="tabela-usuarios"></tbody>
+            </table>
+        
+        </section>
+    </main>
+   <div id="modal-usuario" class="modal">
+        <div class="modal-conteudo">
+    
+      <h3>Cadastrar Novo Operador</h3>
+        
+        <form id="form-usuario">
+            <div>
+                <input type="text" id="nome" placeholder="Nome" required>
+            </div>
+            
+            <div>
+                <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+            </div>
+            
+            <div>
+                <input type="email" id="email" placeholder="E-mail de Login" required>
+            </div>
+            
+            <div>
+                <input type="password" id="senha" placeholder="Senha de Acesso" required>
+            </div>
+            
+            <div>
+                <label>
+                <input type="checkbox" id="eh_admin">Dar permissões de Administrador</label>
+            </div>
+            
+            <div>
+                <button type="button" class="btn btn-cancelar" onclick="fecharModal()">Cancelar</button>
+                <button type="submit" class="btn btn-salvar">Salvar Operador</button>
+            </div>
+        </form>
+    </div>
+</div>
+      
+  
+
+    <script src="static/usuarios.js"></script>
+</body>
+</html>

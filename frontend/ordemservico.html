@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LavaJatoPro - Ordens de Serviço</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="sidebar-menu">
+        <div class="brand">LavaJatoPro</div>
+
+        <ul>
+            <li><a href="/dashboard" class="menu-item">📊 Dashboard</a></li>
+            <li><a href="/clientes" class="menu-item">👥 Clientes</a></li>
+            <li><a href="/veiculos" class="menu-item">🚗 Veículos</a></li>
+            <li><a href="/funcionarios" class="menu-item">👨‍🔧 Funcionários</a></li>
+            <li>
+                <a href="/ordens-servico" class="menu-item active">
+                    📝 Ordens de Serviço
+                </a>
+            </li>
+            <li><a href="/usuarios" class="menu-item">🔒 Usuários/Config</a></li>
+            <li><a href="/caixa" class="menu-item">📦 Caixa</a></li>
+            <li><a href="/auth" class="menu-item">🚪 Sair / Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="content-header">
+            <h2>Gerenciamento de Ordens de Serviço</h2>
+
+            <button
+                type="button"
+                class="btn btn-primary"
+                onclick="abrirModal()">
+                + Nova Ordem
+            </button>
+        </header>
+
+        <section class="table-container">
+            <table class="tabela-padrao">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tipo de Lavagem</th>
+                        <th>Valor</th>
+                        <th>Veículo</th>
+                        <th>Funcionário</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabela-ordens"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Modal para cadastrar uma nova ordem -->
+    <div id="modal-ordem" class="modal">
+        <div class="modal-conteudo">
+            <h3>Nova Ordem de Serviço</h3>
+
+            <form id="form-ordem">
+                <input
+                    type="text"
+                    id="tipo_lavagem"
+                    placeholder="Tipo de lavagem"
+                   
+                >
+
+                <input
+                    type="number"
+                    id="valor"
+                    placeholder="Valor"
+                    step="0.01"
+                    min="0"
+                   
+                >
+
+                <input
+                    type="number"
+                    id="veiculo_id"
+                    placeholder="ID do veículo"
+                    required
+                >
+
+                <input
+                    type="number"
+                    id="funcionario_id"
+                    placeholder="ID do funcionário"
+                    
+                >
+
+                <div class="modal-acoes">
+                    <button
+                        type="button"
+                        class="btn btn-cancelar"
+                        onclick="fecharModal()">
+                        Cancelar
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="btn btn-salvar">
+                        Salvar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para escolher a forma de pagamento -->
+    <div id="modal-entrega" class="modal">
+        <div class="modal-conteudo">
+            <h3>Finalizar Ordem de Serviço</h3>
+
+            <label for="forma_pagamento">
+                Forma de pagamento
+            </label>
+
+            <select id="forma_pagamento" required>
+                <option value="">Selecione</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Pix">Pix</option>
+                <option value="Cartão">Cartão</option>
+            </select>
+
+            <div class="modal-acoes">
+                <button
+                    type="button"
+                    class="btn btn-cancelar"
+                    onclick="fecharModalEntrega()">
+                    Cancelar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-salvar"
+                    onclick="confirmarEntrega()">
+                    Confirmar entrega
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/ordemservico.js"></script>
+</body>
+</html>
