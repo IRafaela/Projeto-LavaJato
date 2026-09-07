@@ -5,7 +5,7 @@ import secrets
 
 class Settings(BaseSettings):
     API_V1_STR: str = '/api/v1'
-    DB_URL: str = 'mysql+aiomysql://root:074596@localhost:3306/sistema_lava_jato'
+    DB_URL: str 
 
     DBBaseModel: ClassVar = declarative_base()
 
