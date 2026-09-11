@@ -32,6 +32,21 @@ async def criar_ordem_servico(
     payload: OrdemServicoCreateSchema,
     db: AsyncSession = Depends(get_session)
 ):
+    ordem_existente = await db.execute(
+        select(OrdemServicoModel).where(
+            OrdemServicoModel.tipo_lavagem == payload.tipo_lavagem,
+            OrdemServicoModel.valor == payload.valor,
+            OrdemServicoModel.veiculo_id == payload.veiculo_id,
+            OrdemServicoModel.funcionario_id == payload.funcionario_id
+        ).limit(1)
+    )
+
+    if ordem_existente.scalars().first():
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail='Esta ordem de serviço já está cadastrada.'
+        )
+
     nova_ordem = OrdemServicoModel(
         tipo_lavagem=payload.tipo_lavagem,
         valor=payload.valor,

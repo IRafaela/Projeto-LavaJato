@@ -1,5 +1,4 @@
-
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
             carregarVeiculos();
             document.getElementById('form-veiculo').addEventListener('submit', salvarVeiculo);
         });
@@ -7,7 +6,7 @@
         function fecharModal() { document.getElementById('modal-veiculo').style.display = 'none'; }
 
         async function carregarVeiculos() {
-            const res = await fetch('/api/v1/veiculos/');
+            const res = await fetch(`/api/v1/veiculos/`);
             const veiculos = await res.json();
             const tabela = document.getElementById('tabela-veiculos');
             tabela.innerHTML = '';
@@ -25,7 +24,7 @@
                 cor: document.getElementById('cor').value,
                 cliente_id: parseInt(document.getElementById('cliente_id').value)
             };
-            const res = await fetch('/api/v1/veiculos/', {
+            const res = await fetch(`/api/v1/veiculos/`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)

@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
             formData.append("password", senha);
 
             try {
-                const response = await fetch('/api/v1/auth/', {
+                const response = await fetch(`/api/v1/auth/`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!nova_senha) return;
 
             try {
-                const response = await fetch('/api/v1/auth/recuperar-senha', {
+                const response = await fetch(`/api/v1/auth/recuperar-senha`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'

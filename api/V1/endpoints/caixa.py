@@ -13,7 +13,7 @@ from core.deps import get_session
 
 router = APIRouter()
 
-@router.get('/')
+@router.get('/', response_model=List[CaixaSchema])
 async def listar_transacoes(
     data: date = None,
     db: AsyncSession = Depends(get_session)

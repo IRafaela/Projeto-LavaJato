@@ -1,5 +1,4 @@
-
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
             carregarClientes();
             document.getElementById('form-cliente').addEventListener('submit', salvarCliente);
         });
@@ -8,7 +7,7 @@
 
         async function carregarClientes() {
             try {
-                const res = await fetch('/api/v1/clientes/');
+                const res = await fetch(`/api/v1/clientes/`);
                 const clientes = await res.json();
                 const tabela = document.getElementById('tabela-clientes');
                 tabela.innerHTML = '';
@@ -27,7 +26,7 @@
                 cpf: document.getElementById('cpf').value || null
             };
             try {
-                const res = await fetch('/api/v1/clientes/', {
+                const res = await fetch(`/api/v1/clientes/`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)

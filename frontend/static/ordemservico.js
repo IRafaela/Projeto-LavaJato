@@ -1,4 +1,5 @@
 let ordemSelecionada = null;
+let enviandoOrdem = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     await excluirOrdensEntreguesHoje();
@@ -107,6 +108,17 @@ async function listarOrdens() {
 async function criarOrdem(evento) {
     evento.preventDefault();
 
+    if (enviandoOrdem) {
+        return;
+    }
+
+    enviandoOrdem = true;
+    const botaoEnviar = evento.submitter;
+
+    if (botaoEnviar) {
+        botaoEnviar.disabled = true;
+    }
+
     const dados = {
         tipo_lavagem: document.getElementById('tipo_lavagem').value,
         valor: Number(document.getElementById('valor').value),
@@ -125,7 +137,8 @@ async function criarOrdem(evento) {
         });
 
         if (!resposta.ok) {
-            throw new Error(await resposta.text());
+            const erro = await resposta.json().catch(() => ({}));
+            throw new Error(erro.detail || `Erro HTTP ${resposta.status}`);
         }
 
         document.getElementById('form-ordem').reset();
@@ -135,7 +148,13 @@ async function criarOrdem(evento) {
         alert('Ordem criada com sucesso!');
     } catch (erro) {
         console.error('Erro ao criar ordem:', erro);
-        alert('Não foi possível criar a ordem.');
+        alert(erro.message || 'Não foi possível criar a ordem.');
+    } finally {
+        enviandoOrdem = false;
+
+        if (botaoEnviar) {
+            botaoEnviar.disabled = false;
+        }
     }
 }
 

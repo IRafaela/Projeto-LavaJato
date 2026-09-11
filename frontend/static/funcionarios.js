@@ -1,5 +1,3 @@
-
-        // 1. Evento para carregar os funcionários ao abrir a página
 document.addEventListener('DOMContentLoaded', () => {
     carregarFuncionarios();
 
@@ -25,7 +23,7 @@ async function salvarFuncionario(e) {
 
     try {
         // Altere a URL para o que estiver no seu Swagger (/docs)
-        const res = await fetch('/api/v1/funcionarios/', {
+        const res = await fetch(`/api/v1/funcionarios/`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
@@ -48,7 +46,7 @@ async function salvarFuncionario(e) {
 // 4. Função para carregar a lista (exemplo básico)
 async function carregarFuncionarios() {
     try {
-        const res = await fetch('/api/v1/funcionarios/');
+        const res = await fetch(`/api/v1/funcionarios/`);
         if (res.ok) {
             const dados = await res.json();
             

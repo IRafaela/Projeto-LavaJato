@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 from typing import Optional
 
@@ -14,6 +14,8 @@ class OrdemServicoCreateSchema(BaseModel):
 
 #O que a api devolve como resposta.
 class OrdemServicoResponseSchema(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     tipo_lavagem: str
     valor: float

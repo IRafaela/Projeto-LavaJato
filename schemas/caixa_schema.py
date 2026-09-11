@@ -1,4 +1,4 @@
-from pydantic import BaseModel 
+from pydantic import BaseModel, ConfigDict
 from typing import Optional
 
 from datetime import datetime
@@ -16,12 +16,10 @@ class CaixaSchemaCreate(CaixaSchemaBase):
     forma_pagamento: Optional[str] = None
 
 class CaixaSchema(CaixaSchemaBase):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int
     data_hora: datetime
-
-
-    class config:
-        from_attributes = True
 
 
      

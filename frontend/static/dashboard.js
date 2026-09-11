@@ -1,7 +1,6 @@
 async function carregarDashboard() {
     try {
-        const response = await fetch('/api/v1/dashboard/');
-
+        const response = await fetch(`/api/v1/dashboard/`);
         if (!response.ok) {
             throw new Error('Erro ao buscar dados do Dashboard');
         }
