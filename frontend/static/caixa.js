@@ -99,3 +99,54 @@ function atualizarTexto(id, valor) {
         elemento.textContent = valor;
     }
 }
+
+function abrirModalRetirada() {
+    const valorInformado = prompt('Informe o valor da retirada:');
+    const descricao = prompt('Informe a descrição da retirada:');
+
+    if (!valorInformado) {
+        alert('Informe um valor válido.');
+        return;
+    }
+
+    const valor = Number(
+        valorInformado.trim().replace(/\./g, '').replace(',', '.')
+    );
+
+    if (!Number.isFinite(valor) || valor <= 0) {
+        alert('Informe um valor válido, por exemplo: 10,50.');
+        return;
+    }
+
+    registrarRetirada(valor, descricao || 'Retirada de caixa');
+}
+
+
+
+async function registrarRetirada(valor, descricao) {
+    try {
+        const resposta = await fetch('/api/v1/caixa/', {
+
+  method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                tipo: 'saida',
+                valor,
+                descricao,
+                forma_pagamento: 'dinheiro'
+            })
+        });
+
+        if (!resposta.ok) {
+            throw new Error(`Erro HTTP ${resposta.status}`);
+        }
+
+        alert('Retirada registrada com sucesso.');
+        await carregarCaixaComFiltro();
+    } catch (erro) {
+        console.error('Erro ao registrar retirada:', erro);
+        alert('Não foi possível registrar a retirada.');
+    }
+}

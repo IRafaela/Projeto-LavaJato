@@ -5,7 +5,7 @@ import secrets
 
 class Settings(BaseSettings):
     API_V1_STR: str = '/api/v1'
-    DB_URL: str = 
+    DB_URL: str 
     
 
     DBBaseModel: ClassVar = declarative_base()
